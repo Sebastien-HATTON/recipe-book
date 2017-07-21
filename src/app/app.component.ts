@@ -19,12 +19,22 @@ export class MyApp {
   tabsPage:any = TabsPage;
   signinPage:any = SigninPage;
   signupPage:any = SignupPage;
+  isAuthenticated = false;
   @ViewChild('nav') nav: NavController;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private menuCtrl: MenuController) {
     firebase.initializeApp({
       apiKey: "AIzaSyDUy_9c7jGJkI7ZmgO4y49Q7ljzEqdvbB8",
       authDomain: "ionic-recipebook-d6a0c.firebaseapp.com"
+    });
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.isAuthenticated = true;
+        this.nav.setRoot(this.tabsPage);
+      } else {
+        this.isAuthenticated = false;
+        this.nav.setRoot(this.signinPage);
+      }
     });
 
     platform.ready().then(() => {
