@@ -4,6 +4,7 @@ import { ShoppingListService } from "../../services/shopping-list-service";
 import { Ingredient } from "../../models/ingredient";
 import { PopoverController } from "ionic-angular";
 import { ShoppingListOptions } from "./shopping-list-options/shopping-list-options";
+import { AuthService } from "../../services/auth-service";
 
 @Component({
   selector: 'page-shopping-list',
@@ -14,7 +15,8 @@ export class ShoppingListPage {
   listItems: Ingredient[];
 
   constructor(private shoppingListService: ShoppingListService,
-              private popoverCtrl: PopoverController) {
+              private popoverCtrl: PopoverController,
+              private authService: AuthService) {
   }
 
   ionViewWillEnter() {
@@ -35,6 +37,20 @@ export class ShoppingListPage {
   onShowOptions(event: MouseEvent) {
     const popover = this.popoverCtrl.create(ShoppingListOptions);
     popover.present({ev: event});
+    popover.onDidDismiss(
+      data => {
+        if (data.action == 'load') {
+
+        } else  {
+          this.authService.getActiveUser().getToken()
+            .then(
+              (token: string) => {
+
+              }
+            );
+        }
+      }
+    );
   }
 
   private loadItems() {
