@@ -3,7 +3,7 @@ import { NgForm } from "@angular/forms";
 import { ShoppingListService } from "../../services/shopping-list-service";
 import { Ingredient } from "../../models/ingredient";
 import { PopoverController } from "ionic-angular";
-import { ShoppingListOptions } from "./shopping-list-options/shopping-list-options";
+import { ShoppingListOptionsPage } from "./shopping-list-options/shopping-list-options";
 import { AuthService } from "../../services/auth-service";
 
 @Component({
@@ -35,7 +35,7 @@ export class ShoppingListPage {
   }
 
   onShowOptions(event: MouseEvent) {
-    const popover = this.popoverCtrl.create(ShoppingListOptions);
+    const popover = this.popoverCtrl.create(ShoppingListOptionsPage);
     popover.present({ev: event});
     popover.onDidDismiss(
       data => {
@@ -45,7 +45,13 @@ export class ShoppingListPage {
           this.authService.getActiveUser().getToken()
             .then(
               (token: string) => {
-
+                this.shoppingListService.storeList(token)
+                  .subscribe(
+                    () => console.log('Success!'),
+                    error => {
+                      console.log(error);
+                    }
+                  );
               }
             );
         }

@@ -1,3 +1,4 @@
+import { HttpModule } from "@angular/http";
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -15,7 +16,7 @@ import { RecipesService } from "../services/recipes-service";
 import { SigninPage } from "../pages/signin/signin";
 import { SignupPage } from "../pages/signup/signup";
 import { AuthService } from "../services/auth-service";
-import { ShoppingListOptions } from "../pages/shopping-list/shopping-list-options/shopping-list-options";
+import { ShoppingListOptionsPage } from "../pages/shopping-list/shopping-list-options/shopping-list-options";
 
 @NgModule({
   declarations: [
@@ -27,11 +28,12 @@ import { ShoppingListOptions } from "../pages/shopping-list/shopping-list-option
     TabsPage,
     SigninPage,
     SignupPage,
-    ShoppingListOptions
+    ShoppingListOptionsPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -43,7 +45,7 @@ import { ShoppingListOptions } from "../pages/shopping-list/shopping-list-option
     TabsPage,
     SigninPage,
     SignupPage,
-    ShoppingListOptions
+    ShoppingListOptionsPage
   ],
   providers: [
     StatusBar,

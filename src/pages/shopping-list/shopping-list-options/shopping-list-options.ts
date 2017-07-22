@@ -6,7 +6,7 @@ import { ViewController } from "ionic-angular";
   selector: 'page-shopping-list-options',
   templateUrl: 'shopping-list-options.html',
 })
-export class ShoppingListOptions {
+export class ShoppingListOptionsPage {
 
   constructor(private viewCtrl: ViewController) {
   }
