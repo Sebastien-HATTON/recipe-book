@@ -4,9 +4,9 @@ import { ViewController } from "ionic-angular";
 
 @Component({
   selector: 'page-shopping-list-options',
-  templateUrl: 'shopping-list-options.html',
+  templateUrl: 'database-options.html',
 })
-export class ShoppingListOptionsPage {
+export class DatabaseOptionsPage {
 
   constructor(private viewCtrl: ViewController) {
   }

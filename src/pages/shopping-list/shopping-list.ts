@@ -3,7 +3,7 @@ import { NgForm } from "@angular/forms";
 import { ShoppingListService } from "../../services/shopping-list-service";
 import { Ingredient } from "../../models/ingredient";
 import { AlertController, LoadingController, PopoverController } from "ionic-angular";
-import { ShoppingListOptionsPage } from "./shopping-list-options/shopping-list-options";
+import { DatabaseOptionsPage } from "../database-options/database-options";
 import { AuthService } from "../../services/auth-service";
 
 @Component({
@@ -41,7 +41,7 @@ export class ShoppingListPage {
       content: 'Please wait...'
     });
 
-    const popover = this.popoverCtrl.create(ShoppingListOptionsPage);
+    const popover = this.popoverCtrl.create(DatabaseOptionsPage);
 
     popover.present({ev: event});
     popover.onDidDismiss(
