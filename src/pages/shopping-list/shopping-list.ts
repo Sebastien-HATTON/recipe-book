@@ -42,6 +42,7 @@ export class ShoppingListPage {
     });
 
     const popover = this.popoverCtrl.create(ShoppingListOptionsPage);
+
     popover.present({ev: event});
     popover.onDidDismiss(
       data => {
