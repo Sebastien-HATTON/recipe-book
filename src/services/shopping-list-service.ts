@@ -41,4 +41,17 @@ export class ShoppingListService {
       });
   }
 
+  fetchList(token: string) {
+    const userId = this.authService.getActiveUser().uid;
+
+    return this.http
+      .get('https://ionic-recipebook-d6a0c.firebaseio.com/' + userId + '/shopping-list.json?auth=' + token)
+      .map((response: Response) => {
+        return response.json();
+      })
+      .do((data) => {
+        this.ingredients = data;
+      });
+  }
+
 }
